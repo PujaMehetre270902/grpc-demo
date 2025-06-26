@@ -1,9 +1,0 @@
-syntax=proto3;
-
-package satellite;
-
-message sendData{
-    int id=1;
-    string temp=2;
-    
-}

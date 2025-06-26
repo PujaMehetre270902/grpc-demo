@@ -1,0 +1,3 @@
+/home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles/myApp.dir
+/home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles/edit_cache.dir
+/home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles/rebuild_cache.dir
