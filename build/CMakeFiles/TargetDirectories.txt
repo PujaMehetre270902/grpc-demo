@@ -1,3 +1,0 @@
-/home/puja/practiceProjects/grpc/build/CMakeFiles/grpcData.dir
-/home/puja/practiceProjects/grpc/build/CMakeFiles/edit_cache.dir
-/home/puja/practiceProjects/grpc/build/CMakeFiles/rebuild_cache.dir
