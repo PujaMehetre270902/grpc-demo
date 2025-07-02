@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/puja/practiceProjects/CICD/jenkins
+CMAKE_SOURCE_DIR = /home/puja/practiceProjects/grpc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/puja/practiceProjects/CICD/jenkins/build
+CMAKE_BINARY_DIR = /home/puja/practiceProjects/grpc/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles /home/puja/practiceProjects/CICD/jenkins/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/grpc/build/CMakeFiles /home/puja/practiceProjects/grpc/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/grpc/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named myApp
+# Target rules for targets named grpcData
 
 # Build rule for target.
-myApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myApp
-.PHONY : myApp
+grpcData: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grpcData
+.PHONY : grpcData
 
 # fast build rule for target.
-myApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/build
-.PHONY : myApp/fast
+grpcData/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/build
+.PHONY : grpcData/fast
 
 demo.o: demo.cpp.o
 .PHONY : demo.o
 
 # target to build an object file
 demo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/demo.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/demo.cpp.o
 .PHONY : demo.cpp.o
 
 demo.i: demo.cpp.i
@@ -142,7 +142,7 @@ demo.i: demo.cpp.i
 
 # target to preprocess a source file
 demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/demo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/demo.cpp.i
 .PHONY : demo.cpp.i
 
 demo.s: demo.cpp.s
@@ -150,7 +150,7 @@ demo.s: demo.cpp.s
 
 # target to generate assembly for a file
 demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/demo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/demo.cpp.s
 .PHONY : demo.cpp.s
 
 # Help Target
@@ -161,7 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... myApp"
+	@echo "... grpcData"
 	@echo "... demo.o"
 	@echo "... demo.i"
 	@echo "... demo.s"

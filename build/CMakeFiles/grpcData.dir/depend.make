@@ -1,2 +1,2 @@
-# Empty dependencies file for myApp.
+# Empty dependencies file for grpcData.
 # This may be replaced when dependencies are built.

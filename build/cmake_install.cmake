@@ -1,4 +1,4 @@
-# Install script for directory: /home/puja/practiceProjects/CICD/jenkins
+# Install script for directory: /home/puja/practiceProjects/grpc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/puja/practiceProjects/CICD/jenkins/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/puja/practiceProjects/grpc/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

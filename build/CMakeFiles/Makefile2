@@ -54,16 +54,16 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/puja/practiceProjects/CICD/jenkins
+CMAKE_SOURCE_DIR = /home/puja/practiceProjects/grpc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/puja/practiceProjects/CICD/jenkins/build
+CMAKE_BINARY_DIR = /home/puja/practiceProjects/grpc/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/myApp.dir/all
+all: CMakeFiles/grpcData.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/myApp.dir/clean
+clean: CMakeFiles/grpcData.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/myApp.dir
+# Target rules for target CMakeFiles/grpcData.dir
 
 # All Build rule for target.
-CMakeFiles/myApp.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles --progress-num=1,2 "Built target myApp"
-.PHONY : CMakeFiles/myApp.dir/all
+CMakeFiles/grpcData.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/puja/practiceProjects/grpc/build/CMakeFiles --progress-num=1,2 "Built target grpcData"
+.PHONY : CMakeFiles/grpcData.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/myApp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/myApp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/CICD/jenkins/build/CMakeFiles 0
-.PHONY : CMakeFiles/myApp.dir/rule
+CMakeFiles/grpcData.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/grpc/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/grpcData.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/puja/practiceProjects/grpc/build/CMakeFiles 0
+.PHONY : CMakeFiles/grpcData.dir/rule
 
 # Convenience name for target.
-myApp: CMakeFiles/myApp.dir/rule
-.PHONY : myApp
+grpcData: CMakeFiles/grpcData.dir/rule
+.PHONY : grpcData
 
 # clean rule for target.
-CMakeFiles/myApp.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myApp.dir/build.make CMakeFiles/myApp.dir/clean
-.PHONY : CMakeFiles/myApp.dir/clean
+CMakeFiles/grpcData.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grpcData.dir/build.make CMakeFiles/grpcData.dir/clean
+.PHONY : CMakeFiles/grpcData.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
