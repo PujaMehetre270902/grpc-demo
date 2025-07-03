@@ -26,4 +26,4 @@ WORKDIR /app
 
 COPY --from=builder /app/build/grpcData .
 # Set the default command
-CMD ["./build/grpcData"]
+CMD ["./grpcData"]
