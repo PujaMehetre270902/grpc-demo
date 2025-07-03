@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'docker run --rm grpcdata clang-tidy'
+                sh 'docker run --rm grpcdata clang-tidy demo.cpp -- -I'
             }
         }
         stage('Push to Dockerhub') {
