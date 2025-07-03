@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04 AS builder
 
 # Install dependencies
 RUN apt-get update && \
@@ -20,5 +20,10 @@ RUN mkdir -p build && \
     make && \
     ls -l
 
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY --from=builder /app/build/grpcData .
 # Set the default command
 CMD ["./build/grpcData"]
