@@ -1,38 +1,34 @@
-# Stage 1: Build with Ubuntu
-FROM ubuntu:22.04 AS builder
+# Stage 1: Builder
+FROM alpine:latest AS builder
 
-# Install build tools
-RUN apt-get update && \
-    apt-get install -y \
-    build-essential \
-    cmake \
-    clang-tidy
+# Install build tools and clang-tidy
+RUN apk add --no-cache build-base cmake clang-tidy
 
 WORKDIR /app
 
-# Copy your source code
+# Copy source code
 COPY . .
 
-# Build the project
+# Build
 RUN mkdir -p build && \
     cd build && \
     cmake .. && \
     make && \
     ls -l
 
-# Stage 2: Run with Alpine
+# Stage 2: Runtime
 FROM alpine:latest
 
-# Fix for glibc dynamic linking
-RUN apk add --no-cache libc6-compat
+# 👇 Add this line to get the C++ standard library!
+RUN apk add --no-cache libstdc++
 
 WORKDIR /app
 
-# Copy only the final binary from the builder stage
+# Copy only the built binary
 COPY --from=builder /app/build/grpcData .
 
-# Optional: make sure it is executable
+# Ensure executable permissions
 RUN chmod +x grpcData
 
-# Set the command to run the app
+# Default command
 CMD ["./grpcData"]
