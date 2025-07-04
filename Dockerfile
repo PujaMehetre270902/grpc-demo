@@ -1,34 +1,23 @@
-# Stage 1: Builder
-FROM alpine:latest AS builder
+FROM ubuntu:22.04
 
-# Install build tools and clang-tidy
-RUN apk add --no-cache build-base cmake clang-tidy
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    build-essential \
+    cmake \
+    clang-tidy
 
+# Set working directory
 WORKDIR /app
 
-# Copy source code
+# Copy all project files into the container
 COPY . .
 
 # Build
 RUN mkdir -p build && \
     cd build && \
     cmake .. && \
-    make && \
-    ls -l
+    make
 
-# Stage 2: Runtime
-FROM alpine:latest
-
-# 👇 Add this line to get the C++ standard library!
-RUN apk add --no-cache libstdc++
-
-WORKDIR /app
-
-# Copy only the built binary
-COPY --from=builder /app/build/grpcData .
-
-# Ensure executable permissions
-RUN chmod +x grpcData
-
-# Default command
-CMD ["./grpcData"]
+# Run
+CMD ["./build/grpcData"]
