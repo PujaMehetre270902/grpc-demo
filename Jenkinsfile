@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker run --rm $DOCKER_IMAGES'
+                sh 'docker run --rm $DOCKER_IMAGE'
             }
         }
         stage('Lint') {
