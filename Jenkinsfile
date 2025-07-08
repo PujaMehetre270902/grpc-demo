@@ -1,12 +1,12 @@
 pipeline {
     agent any
-    enviroment {
+    environment {
         DOCKER_IMAGE='grpcdata'
     }
     stages {
         stage('Build') {
             steps {
-                sh 'docker build --no-cache -t $DOCER_IMAGE .'
+                sh 'docker build --no-cache -t $DOCKER_IMAGE .'
             }
         }
         stage('Run') {
