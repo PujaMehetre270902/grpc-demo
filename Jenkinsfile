@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'make test'
+                sh 'docker run --rm $DOCKER_IMAGE'
             }
         }
         stage('Lint') {
@@ -25,7 +25,6 @@ pipeline {
             }
         }
         stage('Push to Dockerhub') {
-         
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',

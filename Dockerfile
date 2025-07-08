@@ -13,8 +13,10 @@ RUN apt-get update && \
 RUN git clone https://github.com/catchorg/Catch2.git /tmp/Catch2 && \
     cd /tmp/Catch2 && \
     git checkout v2.13.9 && \
-    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local && \
-    cmake --build build --target install && \
+    mkdir build && cd build && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_TESTING=OFF && \
+    make -j$(nproc) && \
+    make install && \
     ldconfig && \
     rm -rf /tmp/Catch2
 
