@@ -1,14 +1,17 @@
 pipeline {
     agent any
+    enviroment {
+        DOCKER_IMAGE='grpcdata'
+    }
     stages {
         stage('Build') {
             steps {
-                sh 'docker build --no-cache -t grpcdata .'
+                sh 'docker build --no-cache -t $DOCER_IMAGE .'
             }
         }
         stage('Run') {
             steps {
-                sh 'docker run --rm grpcdata'
+                sh 'docker run --rm $DOCKER_IMAGE'
             }
         }
         stage('Test') {
@@ -18,7 +21,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'docker run --rm -w /app grpcdata clang-tidy demo.cpp -- -I. -std=c++11'
+                sh 'docker run --rm -w /app $DOCKER_IMAGE clang-tidy demo.cpp -- -I. -std=c++11'
             }
         }
         stage('Push to Dockerhub') {
@@ -30,11 +33,23 @@ pipeline {
                 )]) {
                     sh """
                         echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
-                        docker tag grpcdata $DOCKERHUB_USER/grpcdata:latest
-                        docker push $DOCKERHUB_USER/grpcdata:latest
+                        docker tag $DOCKER_IMAGE $DOCKERHUB_USER/$DOCKER_IMAGE:latest
+                        docker push $DOCKERHUB_USER/$DOCKER_IMAGE:latest
                     """
                 }
             }
+        }
+    }
+    post {
+        success {
+            mail to:'puja.mehetre@harman.com',
+            subject:"Jenkins Pipeline Succeeded. ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body:"Jenkins Pipeline Succeeded. Check details at ${env.BUILD_URL}"
+        }
+        failure {
+            mail to:'puja.mehetre@harman.com',
+            subject:"Jenkins Pipeline Failed. ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body:"Jenkins Pipeline Failed. Check details at ${env.BUILD_URL}"
         }
     }
 }
