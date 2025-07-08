@@ -1,9 +1,10 @@
 #ifndef VEHICLE_CONTROLLER_H
 #define VEHICLE_CONTROLLER_H       
    //#pragma once
+#endif
 
-class VehicleControlle{
-public;
+class VehicleController{
+public:
     bool start();
     bool stop();
 };

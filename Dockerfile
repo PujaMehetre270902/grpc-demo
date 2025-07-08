@@ -1,23 +1,34 @@
 FROM ubuntu:22.04
 
-# Install dependencies
+# Install build tools
 RUN apt-get update && \
     apt-get install -y \
-    build-essential \
-    cmake \
-    clang-tidy
+        build-essential \
+        cmake \
+        clang-tidy \
+        git \
+        pkg-config
 
-# Set working directory
+# Install Catch2 from source with proper configuration
+RUN git clone https://github.com/catchorg/Catch2.git /tmp/Catch2 && \
+    cd /tmp/Catch2 && \
+    git checkout v2.13.9 && \
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local && \
+    cmake --build build --target install && \
+    ldconfig && \
+    rm -rf /tmp/Catch2
+
+# Set workdir
 WORKDIR /app
 
-# Copy all project files into the container
+# Copy project
 COPY . .
 
-# Build
+# Build project
 RUN mkdir -p build && \
     cd build && \
-    cmake .. && \
+    cmake .. -DCMAKE_PREFIX_PATH="/usr/local" -DCMAKE_BUILD_TYPE=Release && \
     make
 
-# Run
-CMD ["./build/grpcData"]
+# Run tests
+CMD ["./build/vehicle_controller_tests"]

@@ -1,0 +1,16 @@
+syntax="proto3"
+
+package vehicle;
+
+message VehicleReuest {
+    string vehicle_id=1;
+}
+
+mesage VehicleResponse {
+    bool success=1;
+}
+
+service VehicleService{
+    rpc Start (VehicleReuest) returns (VehicleResponse);
+    RPC Stop (VehicleReuest) returns (VehicleResponse);
+}
