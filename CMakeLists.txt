@@ -4,16 +4,14 @@ project(MygrpcApp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(vehicle_controller src/vehicle_controller.cpp)
-
 enable_testing()
 
-add_executable(tests test_vehicle_controller.cpp)
+include_directories(/usr/local/include)
 
-target_link_libraries(tests vehicle_controller)
+add_library(vehicle_controller src/vehicle_controller.cpp)
 
-find_package(Catch2 REQUIRES)
+add_executable(vehicle_controller_tests tests/test_vehicle_controller.cpp)
 
-target_link_libraries(tests Catch2::Catch2)
+target_link_libraries(vehicle_controller_tests PRIVATE vehicle_controller)
 
-include(CTest)
+add_test(NAME vehicle_controller_tests COMMAND vehicle_controller_tests)
