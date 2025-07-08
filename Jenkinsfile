@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'docker run --rm -w /app $DOCKER_IMAGE clang-tidy src/vehicle_controller.cpp -- -I. -std=c++11'
+                sh 'docker run --rm -w /app $DOCKER_IMAGE clang-tidy src/vehicle_controller.cpp -- -I/app/src/-std=c++11'
             }
         }
         stage('Push to Dockerhub') {
