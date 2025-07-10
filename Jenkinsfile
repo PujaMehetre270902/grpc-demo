@@ -42,14 +42,10 @@ pipeline {
     }
     post {
         success {
-            mail to:'puja.mehetre@harman.com',
-            subject:"Jenkins Pipeline Succeeded. ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body:"Jenkins Pipeline Succeeded. Check details at ${env.BUILD_URL}"
+            echo "build succeeded"
         }
         failure {
-            mail to:'puja.mehetre@harman.com',
-            subject:"Jenkins Pipeline Failed. ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body:"Jenkins Pipeline Failed. Check details at ${env.BUILD_URL}"
+            echo "Build failed"
         }
     }
 }
